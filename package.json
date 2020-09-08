@@ -1,0 +1,19 @@
+{
+  "name": "tracker-service",
+  "version": "1.0.0",
+  "description": "REST API's in Node Js",
+  "main": "ecosystem.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Balwant Singh",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.1.0",
+    "mongoose": "^5.10.3"
+  }
+}
