@@ -48,8 +48,8 @@ I am assuming frontend will hit an api after certain duration(5 sec) for currect
     "data": {
         "geolocation": {
             "coordinates": [
-                -73.9371,
-                40.8303
+                40.8303,
+                -73.9371
             ],
             "type": "Point"
         },
@@ -119,8 +119,9 @@ It will take PassengerId and Passengers location coordinates (lat, long)
             "_id": "5f577e9d72e0971dec3ca398",
             "geolocation": {
                 "coordinates": [
-                    -73.937,
-                    40.8303
+                    40.8303,
+                    -73.937
+                    
                 ],
                 "type": "Point"
             },
@@ -136,8 +137,9 @@ It will take PassengerId and Passengers location coordinates (lat, long)
             "_id": "5f577e6272e0971dec3ca396",
             "geolocation": {
                 "coordinates": [
-                    -73.9371,
-                    40.8303
+                    40.8303,
+                    -73.9371
+                    
                 ],
                 "type": "Point"
             },
