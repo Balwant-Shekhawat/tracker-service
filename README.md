@@ -113,24 +113,45 @@ It will take PassengerId and Passengers location coordinates (lat, long)
 * **Success Response:**
 ```
 {
-"statusCode": 200,
-"data": [
-    {
-        "_id": "5f577e7f72e0971dec3ca397",
-        "geolocation": {
-            "coordinates": [
-                -73.9371,
-                40.8303
-            ],
-            "type": "Point"
+    "statusCode": 200,
+    "data": [
+        {
+            "_id": "5f577e9d72e0971dec3ca398",
+            "geolocation": {
+                "coordinates": [
+                    -73.937,
+                    40.8303
+                ],
+                "type": "Point"
+            },
+            "driver": {
+                "_id": "5f5759c603c266bdbc1a8f13",
+                "name": "Driver1"
+            },
+            "createdAt": "2020-09-08T12:52:45.816Z",
+            "updatedAt": "2020-09-08T15:05:01.803Z",
+            "__v": 2
         },
-        "driver": "5f5759c603c266bdbc1a8f11",
-        "createdAt": "2020-09-08T12:52:15.668Z",
-        "updatedAt": "2020-09-08T13:46:25.208Z",
-    }
-],
-"message": "OK",
-"error": null
+        {
+            "_id": "5f577e6272e0971dec3ca396",
+            "geolocation": {
+                "coordinates": [
+                    -73.9371,
+                    40.8303
+                ],
+                "type": "Point"
+            },
+            "driver": {
+                "_id": "5f5759c603c266bdbc1a8f13",
+                "name": "Driver3"
+            },
+            "createdAt": "2020-09-08T12:51:46.931Z",
+            "updatedAt": "2020-09-08T14:58:53.793Z",
+            "__v": 1
+        }
+    ],
+    "message": "OK",
+    "error": null
 }
 ```
 

@@ -7,10 +7,10 @@ class DriverController {
         if (!previousLocation) {
             previousLocation = new DriverLocation({
                 driver: objectId(id),
-                geolocation: {type: 'Point', coordinates: [parseFloat(lat), parseFloat(long)]},
+                geolocation: {type: 'Point', coordinates: [parseFloat(long), parseFloat(lat)]},
             });
         } else {
-            previousLocation['geolocation']['coordinates'] = [parseFloat(lat), parseFloat(long)];
+            previousLocation['geolocation']['coordinates'] = [parseFloat(long),parseFloat(lat)];
         }
 
         return await previousLocation.save();
@@ -25,7 +25,7 @@ class DriverController {
 
             geolocation: {
                 $near: {
-                    $geometry: {type: 'Point', coordinates: [parseFloat(lat), parseFloat(long)]},
+                    $geometry: {type: 'Point', coordinates: [parseFloat(long), parseFloat(lat)]},
                     $minDistance: 0,
                     $maxDistance: 200,
                 },
