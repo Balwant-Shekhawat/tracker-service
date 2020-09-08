@@ -1,28 +1,48 @@
 # Avialability Tracker
 
-API's:
+## Endpoints that require Authentication :
 
-1. Update Driver Location
+**Update Driver Location**
+---- 
 
 I am assuming frontend will hit an api after certain duration(5 sec) for currect location of the driver.
 
-PUT http://localhost:3001/api/driver/:id
+* **URL**
 
-Payload:
-{
-    "lat" : <Float>,
-    "long": <Float>
-}
+    http://localhost:3001/api/driver/:id
 
-Sample: PUT http://localhost:3001/api/driver/5f5759c603c266bdbc1a8f11
+* **Method:**
 
-Payload:
-{
-    "lat" : -73.9371,
-    "long": 40.8303
-}
+    PUT
 
-Success Response (200 OK):
+*  **URL Params**
+
+    **Required:**
+ 
+   `id=[ObjectID]`
+   
+*  **Payload**
+
+    ```
+    {
+        "lat" [Float],
+        "long": [Float]
+    }
+    ```
+
+* **Sample Request:**
+ `PUT http://localhost:3001/api/driver/5f5759c603c266bdbc1a8f11`
+
+
+* **Sample Payload:**
+```
+    {
+        "lat" : -73.9371,
+        "long": 40.8303
+    }
+```
+* **Success Response:**
+```
 {
     "statusCode": 200,
     "data": {
@@ -33,7 +53,7 @@ Success Response (200 OK):
             ],
             "type": "Point"
         },
-        "\_id": "5f577e9d72e0971dec3ca398",
+        "_id": "5f577e9d72e0971dec3ca398",
         "driver": "5f5759c603c266bdbc1a8f11",
         "createdAt": "2020-09-08T12:52:45.816Z",
         "updatedAt": "2020-09-08T13:09:39.178Z",
@@ -41,8 +61,10 @@ Success Response (200 OK):
     "message": "OK",
     "error": null
 }
+```
 
-Error Response (500) :
+* **Error Response:**
+```
 {
     "statusCode": 500,
     "data": {},
@@ -51,17 +73,45 @@ Error Response (500) :
         "name": "Error"
     }
 }
+```
 
-2. Find drivers in 200m radius:
+**Find drivers in 200m radius**
+---- 
+ 
 
 It will take PassengerId and Passengers location coordinates (lat, long)
 
-GET http://localhost:3001/api/passenger/id?lat=<Float>&long=<Float>
+* **URL**
 
-Sample: GET http://localhost:3001/api/passenger/5f5759c603c266bdbc1a8f13?lat=-73.937&long=40.83
+    `http://localhost:3001/api/passenger/id?lat=[Float]&long=[Float]`
 
-Success Response (200 OK):
+* **Method:**
 
+    GET
+
+*  **URL Params**
+
+    **Required:**
+ 
+   `id=[ObjectId]`
+
+
+*  **Query Params**
+
+    **Required:**
+
+    `lat=[Float]`
+    `long=[Float]`
+
+
+
+* **Sample Request:**
+
+    `GET http://localhost:3001/api/passenger/5f5759c603c266bdbc1a8f13?lat=-73.937&long=40.83`
+
+
+* **Success Response:**
+```
 {
 "statusCode": 200,
 "data": [
@@ -82,8 +132,10 @@ Success Response (200 OK):
 "message": "OK",
 "error": null
 }
+```
 
-Error Response (500) :
+* **Error Response:**
+```
 {
     "statusCode": 500,
     "data": {},
@@ -92,11 +144,14 @@ Error Response (500) :
         "name": "Error"
     }
 }
+```
+---------------------------------------------
+**MongoDB Schema**
+---- 
 
-Schema:
+* **Drivers Schema**
 
-1. Drivers Schema
-
+```
 {
     _id : ObjectID, // Unique Id for every driver
     name: String,
@@ -104,27 +159,33 @@ Schema:
     createdAt: <TimeStamp>
     updatedAt: <TimeStamp>
 }
+```
 
-2. Drivers Location Schema
+* **Drivers Location Schema**
+```
 {
     driver: {type: mongoose.Schema.Types.ObjectId, ref: 'Driver'},
     geolocation: {type: { type: String }, coordinates: [Number]},
     createdAt: <TimeStamp>
     updatedAt: <TimeStamp>
 }
+```
 
- ===>  Indexing (For Location Coordinates) : 
 
-db.driverlocations.createIndex( { geolocation: "2dsphere" } )
+**Indexing (For Location Coordinates)**
+---- 
+```db.driverlocations.createIndex( { geolocation: "2dsphere" } )```
 
-/* Assumptions */
+**Assumptions**
+----
 
 1. Driver and Passenger are is already authorised.
 2. I am assuming if a drivers location didn't get updated within last 15 minutes, i am neglecting those drivers in searching
 
 
 
-========= Steps to Deploy ==========
+**Steps to Run the Code**
+----
 
 1. Run NPM install => npm install
 2. Install PM2
